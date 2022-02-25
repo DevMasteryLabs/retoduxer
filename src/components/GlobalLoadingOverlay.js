@@ -1,11 +1,13 @@
 import LoadingOverlay from 'react-loading-overlay';
 
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 export default function GlobalLoadingOverlay() {
+    const loading = useSelector(state => state.feedback.loading)
     return (
         <LoadingOverlay
-            active={true}
+            active={loading}
             spinner
             styles={{
                 overlay: (base) => ({
