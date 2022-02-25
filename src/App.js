@@ -1,5 +1,6 @@
 import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import GlobalLoadingOverlay from './components/GlobalLoadingOverlay';
 import Navbar from './components/Navbar';
 import Collaborators from './pages/Collaborators';
 import NewCollaborator from './pages/NewCollaborator';
@@ -11,6 +12,7 @@ import UpdateTodo from './pages/UpdateTodo';
 function App() {
   return (
     <>
+      <GlobalLoadingOverlay />
       <Router>
         <Navbar />
         <Container>
