@@ -1,4 +1,7 @@
+import axios from 'axios';
+import { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import GlobalLoadingOverlay from './components/GlobalLoadingOverlay';
 import Navbar from './components/Navbar';
@@ -8,8 +11,19 @@ import NewTodo from './pages/NewTodo';
 import TodoDetails from './pages/TodoDetails';
 import Todos from './pages/Todos';
 import UpdateTodo from './pages/UpdateTodo';
+import { setTodos } from './redux/actions/todosActionCreators';
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/todos')
+      .then(res => {
+        console.log(res);
+        dispatch(setTodos(res.data))
+      }).catch(err => {
+        console.log(err);
+      })
+  }, [])
   return (
     <>
       <GlobalLoadingOverlay />
