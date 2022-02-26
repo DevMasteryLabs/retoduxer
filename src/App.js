@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
@@ -11,35 +10,17 @@ import NewTodo from './pages/NewTodo';
 import TodoDetails from './pages/TodoDetails';
 import Todos from './pages/Todos';
 import UpdateTodo from './pages/UpdateTodo';
-import { setCollaborators } from './redux/actions/collaboratorsActionCreators';
-import { requestFailed, requestStarted, requestSucceeded } from './redux/actions/feedbackActionCreators';
-import { setTodos } from './redux/actions/todosActionCreators';
+import { fetchCollaborators } from './redux/actions/collaboratorsActionCreators';
+import { fetchTodos } from './redux/actions/todosActionCreators';
 
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(requestStarted())
-    axios.get('https://jsonplaceholder.typicode.com/todos')
-      .then(res => {
-        console.log(res);
-        dispatch(requestSucceeded())
-        dispatch(setTodos(res.data))
-      }).catch(err => {
-        console.log(err);
-        console.log("msg", err.message);
-        dispatch(requestFailed(err.message))
-      })
+    dispatch(fetchTodos())
   }, [])
 
   useEffect(() => {
-    dispatch(requestStarted())
-    axios.get('https://jsonplaceholder.typicode.com/users')
-      .then(res => {
-        dispatch(requestSucceeded())
-        dispatch(setCollaborators(res.data))
-      }).catch(err => {
-        dispatch(requestFailed(err.message))
-      })
+    dispatch(fetchCollaborators())
   }, [])
   
   return (
