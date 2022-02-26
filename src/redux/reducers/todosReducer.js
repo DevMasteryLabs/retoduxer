@@ -64,7 +64,12 @@ const todosReducer = (state = initialState, action) => {
       });
     }
     case SET_TODOS: {
-      return action.payload;
+      return action.payload.map(todo => ({
+        ...todo,
+        id: todo.id && todo.id.toString(),
+        userId: todo.userId && todo.userId.toString(),
+        description: todo.description ? todo.description : ""
+      }));
     }
     default: {
       return state;
