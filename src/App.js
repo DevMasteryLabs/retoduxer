@@ -11,6 +11,7 @@ import NewTodo from './pages/NewTodo';
 import TodoDetails from './pages/TodoDetails';
 import Todos from './pages/Todos';
 import UpdateTodo from './pages/UpdateTodo';
+import { setCollaborators } from './redux/actions/collaboratorsActionCreators';
 import { requestFailed, requestStarted, requestSucceeded } from './redux/actions/feedbackActionCreators';
 import { setTodos } from './redux/actions/todosActionCreators';
 
@@ -29,6 +30,18 @@ function App() {
         dispatch(requestFailed(err.message))
       })
   }, [])
+
+  useEffect(() => {
+    dispatch(requestStarted())
+    axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(res => {
+        dispatch(requestSucceeded())
+        dispatch(setCollaborators(res.data))
+      }).catch(err => {
+        dispatch(requestFailed(err.message))
+      })
+  }, [])
+  
   return (
     <>
       <GlobalLoadingOverlay />

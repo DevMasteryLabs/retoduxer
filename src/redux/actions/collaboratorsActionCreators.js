@@ -1,4 +1,4 @@
-import { ADD_COLLABORATOR, REMOVE_COLLABORATOR, UPDATE_COLLABORATOR } from "../types/collaboratorsTypes";
+import { ADD_COLLABORATOR, REMOVE_COLLABORATOR, SET_COLLABORATORS, UPDATE_COLLABORATOR } from "../types/collaboratorsTypes";
 
 export const addCollaborator = ({name, email, username, phone}) => ({
     type: ADD_COLLABORATOR,
@@ -21,4 +21,10 @@ export const updateCollaborator = (id, details) => ({
         id,
         details
     } 
+})
+
+
+export const setCollaborators = (users) => ({
+    type: SET_COLLABORATORS,
+    payload: users
 })

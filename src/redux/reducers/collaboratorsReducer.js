@@ -1,4 +1,4 @@
-import { ADD_COLLABORATOR, REMOVE_COLLABORATOR, UPDATE_COLLABORATOR } from "../types/collaboratorsTypes";
+import { ADD_COLLABORATOR, REMOVE_COLLABORATOR, SET_COLLABORATORS, UPDATE_COLLABORATOR } from "../types/collaboratorsTypes";
 
 const initialState = [
   {
@@ -40,6 +40,12 @@ const todosReducer = (state = initialState, action) => {
           return collaborator
         }
       });
+    }
+    case SET_COLLABORATORS: {
+      return action.payload.map(user => ({
+        ...user,
+        id: user.id && user.id.toString()
+      }));
     }
     default: {
       return state;
