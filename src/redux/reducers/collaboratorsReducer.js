@@ -1,21 +1,6 @@
 import { ADD_COLLABORATOR, REMOVE_COLLABORATOR, SET_COLLABORATORS, UPDATE_COLLABORATOR } from "../types/collaboratorsTypes";
 
-const initialState = [
-  {
-    id: "1",
-    name: "Leanne Graham",
-    username: "graham",
-    email: "leanne@gmail.com",
-    phone: "1-770-736-8031"
-  },
-  {
-    id: "2",
-    name: "Ervin Howell",
-    username: "ervinh",
-    email: "ervin@outlook.com",
-    phone: "010-692-6593"
-  },
-];
+const initialState = [];
 
 const todosReducer = (state = initialState, action) => {
   switch (action.type) {

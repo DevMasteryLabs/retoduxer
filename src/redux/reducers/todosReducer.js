@@ -1,21 +1,6 @@
 import { ADD_TODO, REMOVE_TODO, SET_TODOS, TOGGLE_TODO_COMPLETED, UPDATE_TODO } from "../types/todosTypes";
 
-const initialState = [
-  {
-    id: "1",
-    title: "Learn Node.js",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos officia culpa ipsum qui minima atque dolor suscipit quis cum accusamus",
-    completed: false,
-    userId: "2"
-  },
-  {
-    id: "2",
-    title: "Learn MongoDB",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos officia culpa ipsum qui minima atque dolor suscipit quis cum accusamus",
-    completed: false,
-    userId: ""
-  },
-];
+const initialState = [];
 
 const todosReducer = (state = initialState, action) => {
   switch (action.type) {
