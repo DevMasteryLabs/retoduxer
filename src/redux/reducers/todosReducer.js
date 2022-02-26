@@ -1,4 +1,4 @@
-import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO_COMPLETED, UPDATE_TODO } from "../types/todosTypes";
+import { ADD_TODO, REMOVE_TODO, SET_TODOS, TOGGLE_TODO_COMPLETED, UPDATE_TODO } from "../types/todosTypes";
 
 const initialState = [
   {
@@ -62,6 +62,9 @@ const todosReducer = (state = initialState, action) => {
           return todo
         }
       });
+    }
+    case SET_TODOS: {
+      return action.payload;
     }
     default: {
       return state;
