@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
+import toast from 'react-simple-toasts'
 import { useDispatch, useSelector } from 'react-redux'
 import { addTodo } from '../redux/actions/todosActionCreators'
 
@@ -14,6 +15,8 @@ export default function NewTodo(props) {
         if (title.trim()) {
             dispatch(addTodo(title, description, collaboratorId))
             props.history.push('/')
+        } else {
+            toast('Title is required', {className: "toast-error"})
         }
     }
     return (
