@@ -1,3 +1,4 @@
+import toast from "react-simple-toasts";
 import { REQUEST_FAILED, REQUEST_STARTED, REQUEST_SUCCEEDED } from "../types/feedbackTypes";
 
 const initialState = {
@@ -20,6 +21,8 @@ const feedbackReducer = (state = initialState, action) => {
         }
     }
     case REQUEST_FAILED: {
+        console.log('action.payload', action.payload);
+        toast(action.payload, {className: 'toast-error'})
         return {
             ...state,
             loading: false,
